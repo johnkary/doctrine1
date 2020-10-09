@@ -121,7 +121,7 @@ class Doctrine_Formatter extends Doctrine_Connection_Module
      */
     public function quoteIdentifier($str, $checkOption = true)
     {
-        if ($checkOption && ! $this->conn->getAttribute(Doctrine_Core::ATTR_QUOTE_IDENTIFIER)) {
+        if (empty($str) || ($checkOption && ! $this->conn->getAttribute(Doctrine_Core::ATTR_QUOTE_IDENTIFIER))) {
             return $str;
         }
         $tmp = $this->conn->identifier_quoting;
